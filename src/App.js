@@ -1,5 +1,10 @@
 import './App.css';
 
+import ecommercmeIg from './assets/E-COM IMG.jpg';
+import portfolioImg from './assets/PORTFOLIO IMG 2.jpeg';
+import caseStudyImg from './assets/DESIGN WORK IMG.jpg';
+import heroImg from './assets/HERO IMG.jpg';
+
 const skills = [
   {
     category: 'Frontend',
@@ -34,6 +39,7 @@ const projects = [
   {
     name: 'E-commerce UI',
     type: 'commerce',
+    image: ecommercmeIg,
     role: 'UI design and frontend',
     description:
       'A modern shopping interface with product cards, clean filters, and responsive checkout-ready layouts.',
@@ -42,6 +48,7 @@ const projects = [
   {
     name: 'Portfolio System',
     type: 'portfolio',
+    image: portfolioImg,
     role: 'Frontend developer',
     description:
       'A structured personal site with focused sections for work, skills, resume access, and contact details.',
@@ -50,6 +57,7 @@ const projects = [
   {
     name: 'Design Case Study',
     type: 'case',
+    image: caseStudyImg,
     role: 'UI/UX designer',
     description:
       'A compact product story showing the problem, process, wireframes, and final interface direction.',
@@ -63,7 +71,7 @@ const socials = [
   { label: 'Email', value: 'maitysagar0605@gmail.com', href: 'mailto:maitysagar0605@gmail.com' },
 ];
 
-function ProjectPreview({ type }) {
+function ProjectPreview({ type, image }) {
   return (
     <div className={`project-preview ${type}`} aria-hidden="true">
       <div className="preview-window">
@@ -72,16 +80,20 @@ function ProjectPreview({ type }) {
         <span />
       </div>
       <div className="preview-body">
-        <div className="preview-sidebar" />
-        <div className="preview-content">
-          <div className="preview-line wide" />
-          <div className="preview-line" />
-          <div className="preview-grid">
-            <div />
-            <div />
-            <div />
+        {image ? (
+          <img src={image} alt="Project preview" className="preview-image" />
+        ) : (
+          /* Wireframe fallback only when no image exists */
+          <div className="preview-content">
+            <div className="preview-line wide" />
+            <div className="preview-line" />
+            <div className="preview-grid">
+              <div />
+              <div />
+              <div />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -124,26 +136,33 @@ function App() {
           </div>
 
           <div className="hero-panel" aria-label="Portfolio overview">
-            <div className="hero-panel-top">
-              <span className="status-dot" />
-              <span>Available for UI and Frontend Work</span>
-            </div>
-            <div className="metric-grid">
-              <div>
-                <strong>3+</strong>
-                <span>Featured projects</span>
-              </div>
-              <div>
-                <strong>4</strong>
-                <span>Core frontend skills</span>
-              </div>
-              <div>
-                <strong>100%</strong>
-                <span>Responsive focus</span>
-              </div>
-            </div>
-          </div>
-        </section>
+  {/* Background image covering the panel */}
+  <img src={heroImg} alt="Hero background" className="hero-panel-bg" />
+
+  {/* Content rendered on top of the image */}
+  <div className="hero-panel-content">
+    <div className="hero-panel-top">
+      <span className="status-dot" />
+      <span>Available for UI and Frontend Work</span>
+    </div>
+
+    <div className="metric-grid">
+      <div>
+        <strong>3+</strong>
+        <span>Featured projects</span>
+      </div>
+      <div>
+        <strong>4</strong>
+        <span>Core frontend skills</span>
+      </div>
+      <div>
+        <strong>100%</strong>
+        <span>Responsive focus</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
         <section className="section about-section" id="about">
           <div className="section-heading">
@@ -190,33 +209,36 @@ function App() {
             <p className="eyebrow">Projects</p>
             <h2>Quality-focused work for portfolio review.</h2>
           </div>
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <article className="project-card" key={project.name}>
-                <ProjectPreview type={project.type} />
-                <div className="project-content">
-                  <div>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                  </div>
-                  <div className="project-meta">
-                    <span>{project.role}</span>
-                    <div className="tech-list">
-                      {project.tech.map((item) => (
-                        <small key={item}>{item}</small>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="project-actions">
-                    <a href="#contact">Live Demo</a>
-                    <a href={socials[0].href} target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-              </article>
+ <div className="projects-grid">
+  {projects.map((project) => (
+    <article className="project-card" key={project.name}>
+      
+      {/* Pass image directly into ProjectPreview */}
+      <ProjectPreview type={project.type} image={project.image} />
+
+      <div className="project-content">
+        <div>
+          <h3>{project.name}</h3>
+          <p>{project.description}</p>
+        </div>
+        <div className="project-meta">
+          <span>{project.role}</span>
+          <div className="tech-list">
+            {project.tech.map((item) => (
+              <small key={item}>{item}</small>
             ))}
           </div>
+        </div>
+        <div className="project-actions">
+          <a href="#contact">Live Demo</a>
+          <a href={socials[0].href} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
         </section>
 
         <section className="section case-study" aria-labelledby="case-study-title">

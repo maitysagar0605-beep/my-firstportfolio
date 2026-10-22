@@ -1,14 +1,19 @@
 :root {
-  --ink: #14213d;
-  --muted: #5d6778;
-  --line: #dce3eb;
-  --paper: #ffffff;
-  --soft: #b3dfdf;
-  --blue: #2563eb;
-  --green: #16bb1f;
-  --coral: #ef7c63;
-  --gold: #f4b740;
-  --shadow: 0 24px 70px rgba(20, 33, 61, 0.1);
+  --primary-color: #4ade80;
+  --primary-dark: #22c55e;
+  --bg-dark: #1a1a1a;
+  --text-light: #f3f4f6;
+  --text-gray: #9ca3af;
+  --card-bg: #252525;
+  --input-bg: #333;
+  --ink: var(--text-light);
+  --muted: var(--text-gray);
+  --line: var(--input-bg);
+  --paper: var(--card-bg);
+  --soft: var(--bg-dark);
+  --blue: var(--primary-color);
+  --green: var(--primary-dark);
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -70,7 +75,7 @@ a {
   font-size: 0.98rem;
   font-weight: 800;
   letter-spacing: 0;
-  box-shadow: 0 10px 24px rgba(20, 33, 61, 0.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
 .nav-links {
@@ -81,7 +86,7 @@ a {
   border: 2px solid var(--blue);
   border-radius: 8px;
   background: var(--paper);
-  box-shadow: 0 10px 24px rgba(20, 33, 61, 0.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
 .nav-links a {
@@ -90,14 +95,14 @@ a {
   min-height: 36px;
   padding: 0 12px;
   border-radius: 6px;
-  color: #14213d;
+  color: var(--text-light);
   font-size: 0.92rem;
   font-weight: 700;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  background: #eef4ff;
+  background: rgba(74, 222, 128, 0.12);
   color: var(--blue);
   outline: none;
 }
@@ -152,7 +157,7 @@ justify-content: center;
 .hero-text {
   max-width: 640px;
   margin: 26px 0 0;
-  color: #14213d;
+  color: var(--text-light);
   font-size: 1.18rem;
   line-height: 1.75;
 }
@@ -179,16 +184,16 @@ justify-content: center;
 }
 
 .button.primary {
-  background: var(--ink);
-  color: var(--paper);
-  box-shadow: 0 16px 34px rgba(20, 33, 61, 0.18);
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
 }
 
 .button.secondary {
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  box-shadow: 0 16px 34px rgba(20, 33, 61, 0.18);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
 }
 
 .button:hover,
@@ -199,39 +204,29 @@ justify-content: center;
 
 .hero-panel {
   position: relative;
-  padding: 22px;
+  min-height: 450px;
+  aspect-ratio: 16 / 10;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.11), rgba(15, 159, 115, 0.08)),
-    var(--paper);
+  background: var(--bg-dark);
   box-shadow: var(--shadow);
 }
 
 .hero-panel::before {
-  content: '';
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  border: 1px solid rgba(20, 33, 61, 0.08);
-  border-radius: 8px;
-  background:
-    linear-gradient(90deg, transparent 58%, rgba(255, 255, 255, 0.72) 58%),
-    linear-gradient(160deg, rgba(37, 99, 235, 0.76), rgba(15, 159, 115, 0.75) 45%, rgba(239, 124, 99, 0.78));
+  content: none;
 }
 
 .hero-panel-top {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(243, 244, 246, 0.38);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(37, 37, 37, 0.9);
   color: var(--ink);
   font-size: 0.88rem;
   font-weight: 800;
@@ -244,7 +239,7 @@ justify-content: center;
   flex: 0 0 10px;
   border-radius: 999px;
   background: var(--green);
-  box-shadow: 0 0 0 5px rgba(15, 159, 115, 0.14);
+  box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.18);
 }
 
 .metric-grid {
@@ -306,7 +301,7 @@ justify-content: center;
   border: 2px solid var(--green);
   border-radius: 8px;
   background: var(--paper);
-  box-shadow: 0 14px 42px rgba(20, 33, 61, 0.06);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.28);
 }
 
 .about-card {
@@ -318,11 +313,10 @@ justify-content: center;
 
 .about-card p {
   margin: 0;
-  color: #14213d;
+  color: var(--text-light);
   font-size: 1.02rem;
   line-height: 1.8;
 }
-
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -388,19 +382,19 @@ justify-content: center;
 .project-preview {
   min-height: 218px;
   padding: 18px;
-  background: #eaf0f8;
+  background: var(--input-bg);
 }
 
 .project-preview.commerce {
-  background: linear-gradient(135deg, #e8f6ef, #eff5ff);
+  background: linear-gradient(135deg, var(--card-bg), var(--input-bg));
 }
 
 .project-preview.portfolio {
-  background: linear-gradient(135deg, #eef4ff, #fff5ef);
+  background: linear-gradient(135deg, var(--input-bg), var(--card-bg));
 }
 
 .project-preview.case {
-  background: linear-gradient(135deg, #fff7e4, #eef9f5);
+  background: linear-gradient(135deg, var(--card-bg), var(--input-bg));
 }
 
 .preview-window {
@@ -409,7 +403,7 @@ justify-content: center;
   height: 30px;
   padding: 10px 12px;
   border-radius: 8px 8px 0 0;
-  background: var(--ink);
+  background: var(--bg-dark);
 }
 
 .preview-window span {
@@ -424,16 +418,16 @@ justify-content: center;
   display: grid;
   grid-template-columns: 64px 1fr;
   min-height: 150px;
-  border: 1px solid rgba(20, 33, 61, 0.12);
+  border: 1px solid rgba(243, 244, 246, 0.12);
   border-top: 0;
   border-radius: 0 0 8px 8px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(37, 37, 37, 0.9);
 }
 
 .preview-sidebar {
   margin: 14px;
   border-radius: 8px;
-  background: rgba(37, 99, 235, 0.18);
+  background: rgba(74, 222, 128, 0.18);
 }
 
 .preview-content {
@@ -445,12 +439,12 @@ justify-content: center;
   width: 54%;
   margin-bottom: 10px;
   border-radius: 8px;
-  background: rgba(20, 33, 61, 0.16);
+  background: rgba(243, 244, 246, 0.16);
 }
 
 .preview-line.wide {
   width: 82%;
-  background: rgba(20, 33, 61, 0.28);
+  background: rgba(243, 244, 246, 0.28);
 }
 
 .preview-grid {
@@ -464,19 +458,19 @@ justify-content: center;
   min-height: 58px;
   border-radius: 8px;
   background: var(--paper);
-  border: 1px solid rgba(20, 33, 61, 0.08);
+  border: 1px solid rgba(243, 244, 246, 0.08);
 }
 
 .commerce .preview-grid div:nth-child(1) {
-  background: rgba(15, 159, 115, 0.2);
+  background: rgba(34, 197, 94, 0.2);
 }
 
 .portfolio .preview-grid div:nth-child(2) {
-  background: rgba(37, 99, 235, 0.2);
+  background: rgba(74, 222, 128, 0.2);
 }
 
 .case .preview-grid div:nth-child(3) {
-  background: rgba(239, 124, 99, 0.22);
+  background: rgba(34, 197, 94, 0.22);
 }
 
 .project-content {
@@ -538,10 +532,9 @@ justify-content: center;
 }
 
 .project-actions a:first-child {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--primary-dark);
+  color: var(--bg-dark);
 }
-
 .case-study {
   padding-top: 36px;
 }
@@ -568,7 +561,7 @@ justify-content: center;
 .process-grid p,
 .resume-panel p {
   margin: 12px 0 0;
-  color: #14213d;
+  color: var(--text-light);
   line-height: 1.68;
 }
 
@@ -578,6 +571,7 @@ justify-content: center;
   gap: 18px;
   align-items: stretch;
 }
+
 
 .resume-panel,
 .contact-panel {
@@ -775,5 +769,75 @@ justify-content: center;
 
   .hero {
     min-height: auto;
+  }
+}
+
+.preview-body {
+  position: relative;
+  overflow: hidden;
+  height: 180px; /* Adjust height according to your design preference */
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Keeps top header/hero portion of the image visible */
+  display: block;
+}
+
+/* Reset preview body layout for images */
+.project-preview .preview-body {
+  display: block;        /* Ensures no sidebar or flex columns block the image */
+  position: relative;
+  width: 100%;
+  height: 180px;         /* Adjust window height as needed */
+  overflow: hidden;
+  padding: 0;            /* Removes inner padding */
+  margin: 0;
+}
+
+/* Make image fit the container perfectly */
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Fills container nicely */
+  object-position: top center; /* Focuses on top portion of page screenshot */
+  display: block;
+}
+
+/* Background image filling the entire marked box */
+.hero-panel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Panel content layer on top of image */
+.hero-panel-content {
+  position: relative;
+  z-index: 1;
+  min-height: 450px;
+  height: 100%;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.58));
+}
+
+@media (max-width: 680px) {
+  .hero-panel {
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  .hero-panel-content {
+    min-height: 0;
+    height: auto;
   }
 }
